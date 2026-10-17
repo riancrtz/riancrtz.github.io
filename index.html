@@ -20,6 +20,9 @@
   --accent: #F2604F;
   --accent-ink: #C8412F;
   --accent-soft: #FDECEA;
+  --sun: #FFD24C;
+  --lilac: #C9B8FF;
+  --peach: #FFC2A8;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "Figtree", "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
@@ -53,10 +56,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .status { display: inline-flex; align-items: center; gap: 10px; width: fit-content; font: 600 14px/1 var(--body); padding: 9px 14px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); color: var(--muted); }
 .status i { width: 8px; height: 8px; border-radius: 50%; background: #22B07D; animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(34,176,125,.5); } 50% { box-shadow: 0 0 0 6px rgba(34,176,125,0); } }
-h1 { font: 800 clamp(40px, 7vw, 84px)/1.02 var(--display); letter-spacing: -0.04em; margin: 0; max-width: 14ch; text-wrap: balance; }
-.swap { display: inline-block; color: var(--accent); }
-.swap.out { animation: out .25s ease-in forwards; }
-.swap.in { animation: in .35s ease-out; }
+h1 { font: 800 clamp(40px, 6vw, 72px)/1.02 var(--display); letter-spacing: -0.04em; margin: 0; max-width: 14ch; text-wrap: balance; }
+.swap { display: inline; color: var(--accent); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.swap.out { animation: fade-out .25s ease-in forwards; }
+.swap.in { animation: fade-in .35s ease-out; }
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes fade-in { from { opacity: 0; } }
 @keyframes out { to { opacity: 0; transform: translateY(-0.2em); } }
 @keyframes in { from { opacity: 0; transform: translateY(0.2em); } }
 .lede { font-size: clamp(18px, 2vw, 20px); color: var(--muted); max-width: 58ch; margin: 0; }
@@ -149,6 +154,56 @@ footer { padding-block: 36px; color: var(--muted); font-size: 14px; }
 .lb img { max-height: 88vh; width: auto; border-radius: 12px; background: #fff; }
 .lb button { position: absolute; top: calc(14px + env(safe-area-inset-top, 0px)); right: calc(14px + env(safe-area-inset-right, 0px)); width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; font-size: 20px; cursor: pointer; }
 
+
+/* Hero with colour wash and work collage */
+.hero { position: relative; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: -80px 0 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(520px 360px at 85% 20%, color-mix(in srgb, var(--peach) 55%, transparent), transparent 70%),
+    radial-gradient(460px 340px at 65% 75%, color-mix(in srgb, var(--lilac) 45%, transparent), transparent 70%),
+    radial-gradient(380px 300px at 8% 10%, color-mix(in srgb, var(--sun) 30%, transparent), transparent 70%); }
+.hero-grid { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.1fr .9fr; } }
+.hero-copy { display: grid; gap: 24px; min-width: 0; }
+.swap { background: linear-gradient(transparent 70%, color-mix(in srgb, var(--sun) 70%, transparent) 70%, color-mix(in srgb, var(--sun) 70%, transparent) 92%, transparent 92%); padding: 0 .04em; }
+.collage { position: relative; height: clamp(300px, 42vw, 440px); }
+.collage .tile { position: absolute; margin: 0; padding: 0; border: 0; background: var(--paper); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-hi); cursor: pointer; transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .3s; }
+.collage .tile img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.collage .t1 { width: 72%; aspect-ratio: 1600/1131; left: 0; top: 4%; transform: rotate(-5deg); animation: float 7s ease-in-out infinite; }
+.collage .t2 { width: 58%; aspect-ratio: 16/10; right: 0; top: 30%; transform: rotate(4deg); animation: float 8s ease-in-out -2s infinite; z-index: 2; }
+.collage .t3 { width: 50%; aspect-ratio: 1600/1042; left: 12%; bottom: 0; transform: rotate(-1deg); animation: float 9s ease-in-out -4s infinite; z-index: 3; }
+.collage:hover .t1 { transform: rotate(-8deg) translate(-12px, -8px); }
+.collage:hover .t2 { transform: rotate(7deg) translate(14px, -4px); }
+.collage:hover .t3 { transform: rotate(-2deg) translateY(10px); }
+.collage .tile:hover { z-index: 5; box-shadow: 0 20px 50px rgba(23,26,43,.2); }
+@keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+.badge { position: absolute; z-index: 6; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 14px; background: var(--paper); box-shadow: var(--shadow-hi); font-weight: 700; font-size: 14px; }
+.badge i { font-style: normal; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--accent-soft); color: var(--accent-ink); font-size: 13px; }
+.badge.b1 { right: 4%; top: 2%; animation: float 6s ease-in-out -1s infinite; }
+.badge.b2 { left: -2%; bottom: 22%; animation: float 7s ease-in-out -3s infinite; }
+.badge.b2 i { background: #E3F7EF; color: #1A8F64; }
+
+/* Stats */
+.stats { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 4px; }
+.stats div { display: grid; gap: 2px; }
+.stats b { font: 800 34px/1 var(--display); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.stats b span { color: var(--accent); }
+.stats small { font-size: 14px; color: var(--muted); }
+
+/* Tinted band for projects */
+.band { margin-top: 88px; padding-block: 72px; background: linear-gradient(180deg, #FFF3EF, #F6F1FF); }
+.band.sec { padding-top: 72px; }
+
+/* Card accent bar on hover */
+.card { position: relative; overflow: hidden; }
+.card::before { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 100%; background: linear-gradient(90deg, var(--accent), var(--sun)); transform: scaleX(0); transform-origin: left; transition: transform .35s; }
+.card:hover::before { transform: scaleX(1); }
+
+/* Contact glow */
+.contact .box { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(135deg, #171A2B 0%, #2A2350 100%); }
+.contact .box::before { content: ""; position: absolute; z-index: -1; right: -120px; top: -120px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 70%, transparent), transparent 65%); }
+.contact .box::after { content: ""; position: absolute; z-index: -1; left: -100px; bottom: -140px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--lilac) 45%, transparent), transparent 65%); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
@@ -171,16 +226,32 @@ footer { padding-block: 36px; color: var(--muted); font-size: 14px; }
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <span class="status"><i aria-hidden="true"></i>Open for OJT next semester</span>
-      <h1>I make <span class="swap" id="swap">scroll-stopping content</span></h1>
-      <p class="lede">Hi, I'm <strong>Rian Santos Cortez</strong>, a Computer Science student at Holy Angel University in Pampanga. I'm looking for an OJT in <strong>social media marketing, video editing or marketing</strong>, where I can plan posts, edit videos and design visuals that help campaigns grow.</p>
-      <div class="cta">
-        <a class="btn primary" href="#work">See my work</a>
-        <a class="btn" href="#contact">Get in touch</a>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="status"><i aria-hidden="true"></i>Open for OJT next semester</span>
+          <h1>I make <span class="swap" id="swap">scroll-stopping content</span></h1>
+          <p class="lede">Hi, I'm <strong>Rian Santos Cortez</strong>, a Computer Science student at Holy Angel University in Pampanga. I'm looking for an OJT in <strong>social media marketing, video editing or marketing</strong>, where I can plan posts, edit videos and design visuals that help campaigns grow.</p>
+          <div class="cta">
+            <a class="btn primary" href="#work">See my work</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </div>
+          <ul class="pills" aria-label="What I do">
+            <li>Social media</li><li>Video editing</li><li>Content creation</li><li>Visual design</li><li>Copywriting</li>
+          </ul>
+          <div class="stats">
+            <div><b data-count="9">9<span>+</span></b><small>projects</small></div>
+            <div><b data-count="6">6</b><small>certificates</small></div>
+            <div><b data-count="2">2</b><small>live websites</small></div>
+          </div>
+        </div>
+        <div class="collage" aria-label="Preview of my work">
+          <button class="tile t1" type="button" data-full="img/yumzys-design-system.webp"><img src="img/yumzys-design-system.webp" alt="Yumzys design system board"></button>
+          <button class="tile t2" type="button" data-full="img/huffle-news.webp"><img src="img/huffle-news.webp" alt="Huffle Mania fashion feature page"></button>
+          <button class="tile t3" type="button" data-full="img/yumzys-home.webp"><img src="img/yumzys-home.webp" alt="Yumzys home screen mockup"></button>
+          <span class="badge b1"><i>✦</i>Brand &amp; UI design</span>
+          <span class="badge b2"><i>▶</i>Content &amp; video</span>
+        </div>
       </div>
-      <ul class="pills" aria-label="What I do">
-        <li>Social media</li><li>Video editing</li><li>Content creation</li><li>Visual design</li><li>Copywriting</li>
-      </ul>
     </div>
   </section>
 
@@ -265,7 +336,7 @@ footer { padding-block: 36px; color: var(--muted); font-size: 14px; }
     </div>
   </section>
 
-  <section id="projects" class="sec">
+  <section id="projects" class="band">
     <div class="wrap">
       <span class="label">More projects</span>
       <h2>Everything else I've worked on</h2>
@@ -328,7 +399,7 @@ footer { padding-block: 36px; color: var(--muted); font-size: 14px; }
     </div>
   </section>
 
-  <section id="skills" class="sec">
+  <section id="skills" class="sec" style="padding-top:80px">
     <div class="wrap">
       <span class="label">Skills</span>
       <h2>What I bring to your team</h2>
@@ -410,7 +481,7 @@ footer { padding-block: 36px; color: var(--muted); font-size: 14px; }
   });
 
   // Lightbox
-  document.querySelectorAll('.shot').forEach(function (b) {
+  document.querySelectorAll('.shot, .tile').forEach(function (b) {
     b.addEventListener('click', function () {
       var lb = document.createElement('div'); lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', 'Enlarged image');
       var img = document.createElement('img'); img.src = b.dataset.full; img.alt = b.querySelector('img').alt;
