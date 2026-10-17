@@ -1,5 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rian Cortez Portfolio</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Rian Santos Cortez: Computer Science student designing interfaces and visual content. Open for a graphic design or marketing OJT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -171,8 +175,10 @@ figcaption b { color: var(--ink); font-weight: 500; }
 .email { font: 500 clamp(18px, 3vw, 26px)/1.3 var(--mono); word-break: break-all; user-select: all; }
 .copied { font: 400 13px/1 var(--mono); color: var(--mark); min-height: 1em; }
 footer { padding-block: var(--s3); font: 400 13px/1.5 var(--mono); color: var(--muted); }
+body { margin: 0; }
 </style>
-
+</head>
+<body>
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top">Rian Cortez<span>.</span></a>
@@ -362,3 +368,6 @@ document.getElementById('copy').addEventListener('click', function () {
   } catch (e) { fallback(); }
 });
 </script>
+
+</body>
+</html>
