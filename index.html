@@ -1,0 +1,364 @@
+<title>Rian Cortez Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Rian Santos Cortez: Computer Science student designing interfaces and visual content. Open for a graphic design or marketing OJT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a designer's spec sheet. Left-aligned single column, work shown large, every image annotated like a Figma redline. */
+:root {
+  --bg: #F4F6FA;
+  --surface: #FFFFFF;
+  --ink: #131A2E;
+  --muted: #59617A;
+  --line: #D9DEEA;
+  --accent: #2F55E4;
+  --accent-ink: #FFFFFF;
+  --mark: #FFD43B;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 40px; --s5: 72px;
+  --wrap: 1120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1322; --surface: #161D31; --ink: #E9ECF5; --muted: #A2AAC2;
+    --line: #2A3350; --accent: #7D97FF; --accent-ink: #0E1322; --mark: #E8BE2A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1322; --surface: #161D31; --ink: #E9ECF5; --muted: #A2AAC2;
+  --line: #2A3350; --accent: #7D97FF; --accent-ink: #0E1322; --mark: #E8BE2A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 17px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+img { display: block; max-width: 100%; height: auto; }
+
+.wrap {
+  max-width: var(--wrap); margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); }
+}
+
+/* Header */
+.top { border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); padding-block: var(--s2); flex-wrap: wrap; }
+.logo { font: 800 20px/1 var(--display); letter-spacing: -0.02em; text-decoration: none; }
+.logo span { color: var(--accent); }
+.nav { display: flex; gap: var(--s3); font-weight: 500; font-size: 15px; }
+.nav a { text-decoration: none; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+
+/* Hero */
+.hero .wrap { padding-block: var(--s5) var(--s4); display: grid; gap: var(--s3); }
+.status {
+  display: inline-flex; align-items: center; gap: 10px; width: fit-content;
+  font: 500 13px/1 var(--mono); letter-spacing: 0.02em;
+  padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+}
+.status i { width: 8px; height: 8px; border-radius: 50%; background: #1FA463; box-shadow: 0 0 0 4px color-mix(in srgb, #1FA463 22%, transparent); }
+h1 {
+  font: 800 clamp(40px, 7.4vw, 92px)/0.98 var(--display);
+  letter-spacing: -0.035em; margin: 0; max-width: 14ch; text-wrap: balance;
+}
+h1 mark { background: linear-gradient(transparent 62%, var(--mark) 62%, var(--mark) 92%, transparent 92%); color: inherit; padding: 0 0.04em; }
+.lede { font-size: clamp(18px, 2vw, 21px); color: var(--muted); max-width: 58ch; margin: 0; }
+.lede strong { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: var(--s1); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px;
+  border-radius: 10px; font: 600 16px/1 var(--body); text-decoration: none;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:hover { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+
+/* Section scaffolding */
+section { scroll-margin-top: 16px; }
+.sec { padding-block: var(--s5) 0; }
+.eyebrow { font: 500 13px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 var(--s2); }
+h2 { font: 700 clamp(30px, 4.4vw, 50px)/1.05 var(--display); letter-spacing: -0.03em; margin: 0 0 var(--s2); text-wrap: balance; }
+h3 { font: 700 24px/1.2 var(--display); letter-spacing: -0.02em; margin: 0 0 var(--s1); }
+p { margin: 0; }
+.intro { color: var(--muted); max-width: 62ch; }
+
+/* Case study */
+.case { display: grid; gap: var(--s4); }
+.facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.facts div { padding: var(--s2) var(--s2) var(--s2) 0; min-width: 0; }
+.facts dt { font: 500 12px/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.facts dd { margin: 0; font-weight: 600; }
+.facts a { color: var(--accent); text-underline-offset: 3px; }
+dl { margin: 0; }
+
+figure { margin: 0; display: grid; gap: 10px; }
+.frame { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+figcaption { font: 400 13px/1.5 var(--mono); color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
+figcaption b { color: var(--ink); font-weight: 500; }
+
+.process { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--s2); counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.process li { counter-increment: step; padding-top: var(--s2); border-top: 2px solid var(--ink); }
+.process li::before { content: counter(step, decimal-leading-zero); font: 500 13px/1 var(--mono); color: var(--accent); display: block; margin-bottom: 10px; }
+.process strong { display: block; font: 700 18px/1.25 var(--display); margin-bottom: 4px; }
+.process span { color: var(--muted); font-size: 15px; }
+
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; }
+.sw { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.sw div { height: 64px; }
+.sw p { padding: 10px 12px; font: 400 12px/1.4 var(--mono); color: var(--muted); }
+.sw p b { display: block; color: var(--ink); font-weight: 500; }
+
+.callout {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--s2) var(--s3); align-items: start;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: var(--s3);
+}
+.ratio { font: 800 clamp(34px, 5vw, 52px)/1 var(--display); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.ratio s { color: var(--muted); text-decoration-thickness: 3px; text-decoration-color: #D9443C; }
+.ratio small { display: block; font: 500 12px/1.3 var(--mono); letter-spacing: 0.04em; color: var(--muted); margin-top: 8px; }
+.callout p { color: var(--muted); max-width: 56ch; }
+.callout p strong { color: var(--ink); }
+@media (max-width: 560px) { .callout { grid-template-columns: 1fr; } }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: var(--s3); }
+
+/* Other work */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--s2); }
+.card {
+  display: grid; gap: 10px; align-content: start; padding: var(--s3);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; min-width: 0;
+}
+.card .role { font: 500 12px/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.card p { color: var(--muted); font-size: 15px; }
+.card a { font-weight: 600; font-size: 15px; color: var(--ink); text-underline-offset: 3px; width: fit-content; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font: 400 12px/1 var(--mono); padding: 6px 8px; border-radius: 6px; background: var(--bg); color: var(--muted); }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--s3); }
+.skills h3 { font-size: 18px; }
+.skills ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; color: var(--muted); }
+.certs { margin-top: var(--s4); border-top: 1px solid var(--line); }
+.certs li { display: flex; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.certs ul { list-style: none; margin: 0; padding: 0; }
+.certs span { font: 400 13px/1.6 var(--mono); color: var(--muted); }
+
+/* Contact */
+.contact { margin-top: var(--s5); background: var(--ink); color: var(--bg); }
+.contact .wrap { padding-block: var(--s5); display: grid; gap: var(--s3); }
+.contact h2 { color: var(--bg); max-width: 16ch; }
+.contact .eyebrow { color: var(--mark); }
+.links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.contact .btn { border-color: var(--bg); color: var(--bg); }
+.contact .btn.primary { background: var(--mark); border-color: var(--mark); color: #131A2E; }
+.email { font: 500 clamp(18px, 3vw, 26px)/1.3 var(--mono); word-break: break-all; user-select: all; }
+.copied { font: 400 13px/1 var(--mono); color: var(--mark); min-height: 1em; }
+footer { padding-block: var(--s3); font: 400 13px/1.5 var(--mono); color: var(--muted); }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">Rian Cortez<span>.</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="status"><i aria-hidden="true"></i>Open for OJT · Design &amp; marketing</span>
+      <h1>I design things people <mark>see</mark>, and I know how they get built.</h1>
+      <p class="lede">I'm <strong>Rian Santos Cortez</strong>, a Computer Science student at Holy Angel University in Pampanga. I design interfaces from wireframe to design system, build editorial websites, and turn technical projects into reports and videos anyone can follow.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn" href="https://www.linkedin.com/in/rian-cortez-a0ba53326/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="sec">
+    <div class="wrap case">
+      <div>
+        <p class="eyebrow">Case study · UI/UX design</p>
+        <h2>Yumzys, a restaurant bucket list app</h2>
+        <p class="intro">Deciding where to eat in Angeles usually means scrolling old chats. Yumzys keeps one running list of cafés and restaurants to try, then lets you mark them visited, rate them, and add your own photos. I owned the design from proposal to shipped product.</p>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Designer &amp; developer</dd></div>
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Tools</dt><dd>Figma, React, CSS</dd></div>
+        <div><dt>Links</dt><dd><a href="https://riancrtz.github.io/yumzys/" target="_blank" rel="noopener">Live site</a> · <a href="https://drive.google.com/file/d/1XLHbRuxzlc3vbANeGRw_YR3k94nehoHk/view?usp=sharing" target="_blank" rel="noopener">Demo</a> · <a href="https://github.com/riancrtz/yumzys" target="_blank" rel="noopener">Code</a></dd></div>
+      </dl>
+
+      <figure>
+        <div class="frame"><img src="img/yumzys-design-system.webp" width="1600" height="1131" alt="Yumzys design system board showing colour tokens, a three-step type scale, an 8px spacing scale, atom, molecule and organism components, responsive rules and an accessibility checklist."></div>
+        <figcaption><b>Design system board</b><span>Tokens · type · spacing · components · accessibility</span></figcaption>
+      </figure>
+
+      <ol class="process">
+        <li><strong>Proposal</strong><span>Defined the problem, the single user, and six core screens.</span></li>
+        <li><strong>Wireframes</strong><span>Mapped every screen in a plain HTML wireframe before adding colour.</span></li>
+        <li><strong>Figma mockups</strong><span>Painted all screens at 1240px desktop and 375px phone, using real data.</span></li>
+        <li><strong>Design system</strong><span>Locked colours, type, spacing and component states so screen four matches screen one.</span></li>
+        <li><strong>Build &amp; ship</strong><span>Built and deployed it in React, with the design system as the source of truth.</span></li>
+      </ol>
+
+      <figure>
+        <div class="frame"><img src="img/yumzys-home.webp" width="1600" height="1042" alt="Yumzys home screen mockup at desktop and phone widths, showing place cards with ratings and Want to try badges." loading="lazy"></div>
+        <figcaption><b>Home</b><span>Desktop 1240px · Phone 375px</span></figcaption>
+      </figure>
+
+      <div class="callout">
+        <div class="ratio"><s>2.9:1</s> → 5.2:1<small>BUTTON TEXT CONTRAST</small></div>
+        <p><strong>A design decision I tested, not guessed.</strong> White text on the terracotta buttons looked right but measured only 2.9:1, below the 4.5:1 accessibility minimum. I switched it to dark ink, which reaches 5.2:1. Star ratings also show the number beside them, because amber alone is too light to carry meaning.</p>
+      </div>
+
+      <div class="swatches" role="list" aria-label="Yumzys colour palette">
+        <div class="sw" role="listitem"><div style="background:#D08549"></div><p><b>Primary</b>#D08549</p></div>
+        <div class="sw" role="listitem"><div style="background:#E8A33D"></div><p><b>Accent</b>#E8A33D</p></div>
+        <div class="sw" role="listitem"><div style="background:#FAFAFA"></div><p><b>Surface</b>#FAFAFA</p></div>
+        <div class="sw" role="listitem"><div style="background:#2B2420"></div><p><b>Ink</b>#2B2420</p></div>
+      </div>
+
+      <div class="grid2">
+        <figure>
+          <div class="frame"><img src="img/yumzys-place.webp" width="1600" height="1345" alt="Yumzys place detail mockup with photo, rating, status toggle and photo gallery." loading="lazy"></div>
+          <figcaption><b>Place page</b><span>Status toggles in place</span></figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="img/yumzys-add.webp" width="1600" height="1005" alt="Yumzys add place form mockup at desktop and phone widths." loading="lazy"></div>
+          <figcaption><b>Add place</b><span>44px minimum tap targets</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap case">
+      <div>
+        <p class="eyebrow">Web &amp; editorial design</p>
+        <h2>Huffle Mania, an online fashion magazine</h2>
+        <p class="intro">A fashion news site covering runway shows, celebrity looks and streetwear brands. Its Home, News Feed, Trending and About pages pair a bold serif masthead with full-bleed editorial photos, styled entirely with hand-written CSS.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Web design</dd></div>
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Tools</dt><dd>HTML, CSS</dd></div>
+        <div><dt>Links</dt><dd><a href="https://github.com/riancrtz/Huffle_Mania" target="_blank" rel="noopener">Code</a></dd></div>
+      </dl>
+      <div class="grid2">
+        <figure>
+          <div class="frame"><img src="img/huffle-home.webp" width="1280" height="800" alt="Huffle Mania home page with a serif masthead and a three-column Latest News grid of runway photos." loading="lazy"></div>
+          <figcaption><b>Home</b><span>Latest News grid</span></figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="img/huffle-news.webp" width="1280" height="800" alt="Huffle Mania News Feed page with a full-width editorial photo feature." loading="lazy"></div>
+          <figcaption><b>News Feed</b><span>Full-bleed feature image</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <p class="eyebrow">More projects</p>
+      <h2>Leading teams and explaining tech</h2>
+      <div class="cards">
+        <article class="card">
+          <span class="role">Project lead</span>
+          <h3>Fake News Detection</h3>
+          <p>Led a 4-person team building a system that flags misleading political claims. I also produced our report, ethics statement and a 15-minute walkthrough video.</p>
+          <div class="tags"><span>Leadership</span><span>Video</span><span>Writing</span></div>
+          <a href="https://github.com/riancrtz/fake-news-detection-nlp" target="_blank" rel="noopener">View project</a>
+        </article>
+        <article class="card">
+          <span class="role">Frontend</span>
+          <h3>BudgetBlud</h3>
+          <p>A budgeting mobile app with light and dark themes, charts, and English, Tagalog and Spanish versions. I worked on the app screens and data sync.</p>
+          <div class="tags"><span>Flutter</span><span>Mobile UI</span></div>
+          <a href="https://github.com/rnzcrt/BudgetBlud" target="_blank" rel="noopener">View project</a>
+        </article>
+        <article class="card">
+          <span class="role">Team of 6 · Docs lead</span>
+          <h3>Cloud-Hosted Web App</h3>
+          <p>Deployed a multi-tier web app on AWS with my team. I led monitoring and wrote the project documentation.</p>
+          <div class="tags"><span>AWS</span><span>Documentation</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="sec">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h2>What I bring to a team</h2>
+      <div class="skills">
+        <div><h3>Design</h3><ul><li>UI layout &amp; wireframing</li><li>Design systems</li><li>Responsive web design</li><li>Accessible colour &amp; type</li></ul></div>
+        <div><h3>Content &amp; marketing</h3><ul><li>Writing &amp; documentation</li><li>Video walkthroughs</li><li>Editorial web content</li><li>Presenting to non-technical people</li></ul></div>
+        <div><h3>Tools</h3><ul><li>Figma</li><li>HTML, CSS, JavaScript</li><li>React</li><li>Git &amp; GitHub</li></ul></div>
+      </div>
+      <div class="certs">
+        <ul>
+          <li>Responsive Web Design <span>freeCodeCamp</span></li>
+          <li>Data Analytics Essentials <span>Cisco Networking Academy · 2026</span></li>
+          <li>Artificial Intelligence Fundamentals <span>IBM SkillsBuild · 2026</span></li>
+          <li>Cyber Threat Management <span>Cisco Networking Academy · 2025</span></li>
+          <li>Endpoint Security <span>Cisco Networking Academy · 2025</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Looking for a design or marketing intern?</h2>
+      <p class="email" id="email">riancortez101@gmail.com</p>
+      <div class="links">
+        <button class="btn primary" type="button" id="copy">Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/rian-cortez-a0ba53326/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/riancrtz" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="copied" id="copied" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Rian Santos Cortez · Pampanga, Philippines · 2026</div></footer>
+
+<script>
+document.getElementById('copy').addEventListener('click', function () {
+  var text = document.getElementById('email').textContent.trim();
+  var msg = document.getElementById('copied');
+  function fallback() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    msg.textContent = 'Email selected. Press Ctrl+C or Cmd+C to copy.';
+  }
+  try {
+    navigator.clipboard.writeText(text).then(function () { msg.textContent = 'Email copied.'; }, fallback);
+  } catch (e) { fallback(); }
+});
+</script>
